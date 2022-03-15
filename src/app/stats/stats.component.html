@@ -1,0 +1,49 @@
+<div class="h3 bg-dark p-4 text-light text-center">Statistics</div>
+<div *ngIf="fiveDaysTransaction" style="margin-top: 3%;">
+  <div class="d-flex justify-content-center m-4">
+    <!-- Card of Top 5 sell -->
+    <div class="card text-light bg-dark p-4 m-2" style="width: 30%;">
+      <div class="h3 text-center bg-secondary p-3 rounded">Top 5 sell</div>
+      <div *ngFor="let item of topFiveSell">
+        <div class="row" *ngIf="item.amount > 0">
+            <div class="p-3 col-10">
+                <label>{{item.title}}</label>
+              </div>
+              <div class="p-3 col-1">
+                <label>{{item.amount}}</label>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Card of Top 5 unique sell -->
+    <div class="card text-light bg-dark p-4 m-2" style="width: 30%;">
+      <div class="h3 text-center bg-secondary p-3 rounded">Top 5 unique sell</div>
+      <div *ngFor="let item of productsSerial">
+          <div class="row"  *ngIf="item.count > 0">
+            <div class="p-3 col-10">
+                <label>{{item.title}}</label>
+              </div>
+              <div class="p-3 col-1">
+                <label>{{item.count}}</label>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- Card of Past 5 Days -->
+    <div class="card text-light bg-dark p-4 m-2" style="width: 30%;">
+      <div class="h3 text-center bg-secondary p-3 rounded">Past 5 Days $</div>
+      <div *ngFor="let item of fiveDaysTransaction">
+        <div class="row" *ngIf="item.total > 0">
+            <div class="p-3 col-10">
+                <label>{{item.date}}</label>
+              </div>
+              <div class="p-3 col-1">
+                <label>{{item.total}}$</label>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>

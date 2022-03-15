@@ -1,0 +1,20 @@
+[   
+    {
+        "title": "pen",
+        "price": 4,
+        "description": "we can write with this product",
+        "image": "www.google.com"
+    },
+    {
+        "title": "phone",
+        "price": 7,
+        "description": "we can talk with friends",
+        "image": "www.phones.com"
+    },
+    {
+        "title": "mouse",
+        "price": 14,
+        "description": "usefull for developer",
+        "image": "www.computer.com"
+    }
+]

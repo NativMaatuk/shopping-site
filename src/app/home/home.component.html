@@ -1,0 +1,52 @@
+
+<!--
+    cart template
+-->
+<div *ngIf="cart">
+    <div class="dropdown">
+        <button (click)="myFunction();" class="dropbtn">Shopping Cart <label *ngIf="countProduct > 0">{{countProduct}}</label></button>
+        <div id="myDropdown" class="dropdown-content" >
+            <div *ngFor="let product of cart.products; let i = index">
+                <div class="row p-2">
+                    <div class="col-md-8 text-left">{{product.title}}</div>
+                    <div class="col-md-4">{{product.price}}$</div>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8 text-left">Total:</div>
+                <div class="col-md-4">{{totalPrice}}$</div>
+            </div>
+            <div class="p-2">
+                <button *ngIf="countProduct > 0" (click)="createTaransaction()" style="min-width: 100%;" type="button" class="btn btn-outline-success d-flex justify-content-center">Pay</button>
+            </div>
+        </div>
+      </div> 
+</div>
+ 
+
+<!--
+    ptoducts template
+-->
+<div *ngIf="products">
+
+<div class="row card-group m-1">
+    <div *ngFor="let product of products; let i = index" class="container mt-5 col-3">
+
+            <div class="card p-3 bg-white">
+                <div class="about-product text-center mt-2"><img src= "{{ product.image }}" width="200" height="200">
+                    <div>
+                        <h4>{{ product.title }}</h4>
+                        <h6 class="mt-0 text-black-50">{{ product.description }}</h6>
+                    </div>
+                </div>
+                <div class="stats mt-2">
+                    <div class="d-flex justify-content-between p-price"><span>price</span><span>{{ product.price }}$</span></div>
+                    <div class="d-flex justify-content-center" style="margin-top: 10%;">
+                        <button style="width: 100%;" (click)="pushToCart(product)" type="button" class="btn btn-outline-primary" >Buy</button>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+</div>

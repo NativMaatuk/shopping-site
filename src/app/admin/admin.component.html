@@ -1,0 +1,108 @@
+<div class="text-center bg-secondary p-4 h2 text-dark">Wellcom to Controll Panel</div>
+
+<div class="bg-dark text-light rounded" style="width: 90%; margin-left: auto; margin-right: auto;">
+  <div class="p-2">
+    <button id="showAddProduct" style="display: block;" (click)="showAddProduct()" class="btn btn-light">Add
+      Product</button>
+    <div id="AddProductForm" style="display: none;">
+      <form #addProductForm="ngForm" (ngSubmit)="addProduct(addProductForm)">
+        <div class="form-group">
+          <div class="row">
+
+            <div class="col-1">
+              <button type="submit" style="width: 100%;" class="btn btn-success">Add</button>
+            </div>
+            <div class="col-1">
+              <button (click)="showAddProduct()" type="button" style="width: 100%;"
+                class="btn btn-success">Close</button>
+            </div>
+            <div class="col-1">
+              <input class="form-control" name="title" type="text" placeholder="Title" ngModel />
+            </div>
+            <div class="col-1">
+              <input class="form-control" name="price" type="number" placeholder="Price" ngModel />
+            </div>
+            <div class="col-2">
+              <input class="form-control" name="description" type="text" placeholder="Description" ngModel />
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" name="image" type="text" placeholder='Url Image' ngModel />
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row p-3 h5 border border-light" style="margin-bottom: 5px;">
+    <div class="col-2" style="text-align: center;">
+      Options
+    </div>
+    <div class="col-1">
+      Title
+    </div>
+    <div class="col-1">
+      Price
+    </div>
+    <div class="col-2">
+      Description
+    </div>
+    <div class="col-6">
+      Image
+    </div>
+  </div>
+
+  <div *ngIf="products">
+    <div class="row p-3 border border-light" *ngFor="let product of products; let i = index;">
+      <div class="col-1">
+        <button style="width: 100%;" (click)="showForm(i)" class="btn btn-primary">Edit</button>
+      </div>
+      <div class="col-1">
+        <button style="width: 100%;" (click)="deleteProduct(i)"
+          class="btn btn-outline-danger text-light">Delete</button>
+      </div>
+      <div class="col-1">
+        {{product.title}}
+      </div>
+      <div class="col-1">
+        {{product.price}}
+      </div>
+      <div class="col-2">
+        {{product.description}}
+      </div>
+      <div class="col-6">
+        {{product.image}}
+      </div>
+
+      <div id={{i}} style="display: none;margin-top: 10px;">
+        <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm,i)">
+          <div class="form-group">
+            <div class="row">
+
+              <div class="col-2">
+                <button type="submit" style="width: 100%;" class="btn btn-success">Update</button>
+              </div>
+              <div class="col-1">
+                <input class="form-control" name="title" type="text" placeholder={{product.title}} ngModel />
+              </div>
+              <div class="col-1">
+                <input class="form-control" name="price" type="number" placeholder={{product.price}} ngModel />
+              </div>
+              <div class="col-2">
+                <input class="form-control" name="description" type="text" placeholder={{product.description}}
+                  ngModel />
+              </div>
+              <div class="col-md-6">
+                <input class="form-control" name="image" type="text" placeholder={{product.image}} ngModel />
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
